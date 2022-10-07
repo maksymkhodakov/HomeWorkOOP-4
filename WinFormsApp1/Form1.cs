@@ -24,7 +24,7 @@ namespace WinFormsApp1
             this.dataGridView1.DataSource = Goods;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void AddDataButtonClick(object sender, EventArgs e)
         {
             // test data to add
             // TODO: GET DATA FROM REMOTE STORAGE!!!
@@ -32,7 +32,7 @@ namespace WinFormsApp1
             ShowData();
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void DeleteDataButtonClick(object sender, EventArgs e)
         {
             if (Goods.Count > 0)
             {

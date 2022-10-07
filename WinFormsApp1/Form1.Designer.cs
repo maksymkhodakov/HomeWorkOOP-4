@@ -50,7 +50,7 @@ namespace WinFormsApp1
             this.bytton1.TabIndex = 1;
             this.bytton1.Text = "AddGoods";
             this.bytton1.UseVisualStyleBackColor = true;
-            this.bytton1.Click += new System.EventHandler(this.Button1_Click);
+            this.bytton1.Click += new System.EventHandler(this.AddDataButtonClick);
             // 
             // button2
             // 
@@ -60,7 +60,7 @@ namespace WinFormsApp1
             this.button2.TabIndex = 2;
             this.button2.Text = "DeleteGoods";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.button2.Click += new System.EventHandler(this.DeleteDataButtonClick);
             // 
             // Form1
             // 
