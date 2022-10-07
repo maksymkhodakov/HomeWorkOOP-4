@@ -6,38 +6,85 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        private List<Goods> Goods = new List<Goods>() {
-            new Goods(12.2, "USA", "Cool goods", new DateTime(), "SuperDescription"),
-            new Goods(121.22, "Canada", "Not so cool", new DateTime(), "Informative"),
-            new Book(121.211, "Ukraine", "Kobzar", new DateTime(), "The greatest!",
-                1000, "Taras Shevchenko", new List<string>())
-        };
         public Form1()
         {
             InitializeComponent();
-            ShowData();
         }
 
-        private void ShowData() 
+        private void Button1_Click(object sender, EventArgs e)
         {
-            this.dataGridView1.DataSource = null;
-            this.dataGridView1.DataSource = Goods;
+            CheckBaseDataIsSet();
+            ValidateBaseData();
+            var type = IdentifyType();
+            GenerateObject(type);
         }
 
-        private void AddDataButtonClick(object sender, EventArgs e)
+        private void CheckBaseDataIsSet() 
         {
-            // test data to add
-            // TODO: GET DATA FROM REMOTE STORAGE!!!
-            Goods.Add(new Goods(331.22, "Japan", "so cool", new DateTime(), "TEST"));
-            ShowData();
+            CheckBaseNotEmpty(textBoxPrice.Text);
+            CheckBaseNotEmpty(textBoxOriginCountry.Text);
+            CheckBaseNotEmpty(textBoxName.Text);
+            CheckBaseNotEmpty(textBoxDateOfPacking.Text);
+            CheckBaseNotEmpty(textBoxDescription.Text);
         }
 
-        private void DeleteDataButtonClick(object sender, EventArgs e)
+        private void ValidateBaseData() 
         {
-            if (Goods.Count > 0)
+            DataValidator.IsNumeric(textBoxPrice.Text);
+            DataValidator.IsDateTime(textBoxDateOfPacking.Text);
+        }
+
+        private bool CheckBaseNotEmpty(string data) 
+        {
+            if (data.Length == 0) {
+                MessageBox.Show("Required data is empty");
+            }
+            return true;
+        }
+
+        private StorageTypes IdentifyType() 
+        {
+            if (!String.IsNullOrEmpty(textBoxPagesAmount.Text)
+                && !String.IsNullOrEmpty(textBoxPublisher.Text)
+                && !String.IsNullOrEmpty(textBoxAuthors.Text)
+                && DataValidator.IsNumeric(textBoxPagesAmount.Text)) return StorageTypes.BOOK;
+            else if (!String.IsNullOrEmpty(textBoxExpirationDate.Text)
+                && DataValidator.IsDateTime(textBoxExpirationDate.Text)
+                && !String.IsNullOrEmpty(textBoxAmountInStorage.Text)
+                && DataValidator.IsNumeric(textBoxAmountInStorage.Text)
+                && !String.IsNullOrEmpty(textBoxDimension.Text)) return StorageTypes.PRODUCT;
+            else return StorageTypes.NOT_INCLUDED;
+        }
+
+        private void GenerateObject(StorageTypes type) 
+        {
+            if (type.Equals(StorageTypes.BOOK))
             {
-                Goods.RemoveAt(Goods.Count - 1);
-                ShowData();
+                this.dataGridView1.Rows.Add(textBoxPrice.Text,
+                    textBoxOriginCountry.Text, textBoxName.Text, textBoxDateOfPacking.Text,
+                    textBoxDescription.Text, textBoxPagesAmount.Text, textBoxPublisher.Text,
+                    textBoxAuthors.Text);
+            }
+            else if (type.Equals(StorageTypes.PRODUCT)) {
+                this.dataGridView1.Rows.Add(textBoxPrice.Text,
+                    textBoxOriginCountry.Text, textBoxName.Text, textBoxDateOfPacking.Text,
+                    textBoxDescription.Text,"","","", textBoxExpirationDate.Text,
+                    textBoxAmountInStorage.Text, textBoxDimension.Text);
+            } else this.dataGridView1.Rows.Add(textBoxPrice.Text,
+                    textBoxOriginCountry.Text, textBoxName.Text, textBoxDateOfPacking.Text,
+                    textBoxDescription.Text);
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            DeleteRow();
+        }
+        private void DeleteRow() 
+        {
+            if (this.dataGridView1.Rows.Count > 0)
+            {
+                int index = this.dataGridView1.CurrentCell.RowIndex;
+                this.dataGridView1.Rows.RemoveAt(index);
             }
             else
             {
