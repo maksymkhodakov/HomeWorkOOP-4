@@ -98,7 +98,7 @@ namespace WinFormsApp1
             this.byttonAddGoods.TabIndex = 1;
             this.byttonAddGoods.Text = "AddGoods";
             this.byttonAddGoods.UseVisualStyleBackColor = true;
-            this.byttonAddGoods.Click += new System.EventHandler(this.Button1_Click);
+            this.byttonAddGoods.Click += new System.EventHandler(this.AddDataButtonClick);
             // 
             // buttonDeleteGoods
             // 
@@ -108,7 +108,7 @@ namespace WinFormsApp1
             this.buttonDeleteGoods.TabIndex = 2;
             this.buttonDeleteGoods.Text = "DeleteGoods";
             this.buttonDeleteGoods.UseVisualStyleBackColor = true;
-            this.buttonDeleteGoods.Click += new System.EventHandler(this.Button2_Click);
+            this.buttonDeleteGoods.Click += new System.EventHandler(this.DeleteDataButtonClick);
             // 
             // textBoxPrice
             // 

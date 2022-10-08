@@ -13,6 +13,10 @@ namespace WinFormsApp1
         {
             return DateTime.TryParse(s, out DateTime Temp);
         }
+        public static bool IsStringValid(string s) 
+        {
+            return !String.IsNullOrEmpty(s);
+        }
     }
     public enum StorageTypes { BOOK, PRODUCT, NOT_INCLUDED }
 }

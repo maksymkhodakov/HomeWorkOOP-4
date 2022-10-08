@@ -11,7 +11,7 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void AddDataButtonClick(object sender, EventArgs e)
         {
             CheckBaseDataIsSet();
             ValidateBaseData();
@@ -44,20 +44,33 @@ namespace WinFormsApp1
 
         private StorageTypes IdentifyType() 
         {
-            if (!String.IsNullOrEmpty(textBoxPagesAmount.Text)
-                && !String.IsNullOrEmpty(textBoxPublisher.Text)
-                && !String.IsNullOrEmpty(textBoxAuthors.Text)
-                && DataValidator.IsNumeric(textBoxPagesAmount.Text)) return StorageTypes.BOOK;
-            else if (!String.IsNullOrEmpty(textBoxExpirationDate.Text)
-                && DataValidator.IsDateTime(textBoxExpirationDate.Text)
-                && !String.IsNullOrEmpty(textBoxAmountInStorage.Text)
-                && DataValidator.IsNumeric(textBoxAmountInStorage.Text)
-                && !String.IsNullOrEmpty(textBoxDimension.Text)) return StorageTypes.PRODUCT;
+            // check type of goods
+            if (BookTypeCheck() && ProductTypeCheck()) return StorageTypes.NOT_INCLUDED;
+            else if (BookTypeCheck()) return StorageTypes.BOOK;
+            else if (ProductTypeCheck()) return StorageTypes.PRODUCT;
             else return StorageTypes.NOT_INCLUDED;
+        }
+
+        private bool BookTypeCheck() 
+        {
+            return DataValidator.IsStringValid(textBoxPagesAmount.Text)
+                && DataValidator.IsStringValid(textBoxPublisher.Text)
+                && DataValidator.IsStringValid(textBoxAuthors.Text)
+                && DataValidator.IsNumeric(textBoxPagesAmount.Text);
+        }
+
+        private bool ProductTypeCheck() 
+        {
+            return DataValidator.IsStringValid(textBoxExpirationDate.Text)
+                && DataValidator.IsDateTime(textBoxExpirationDate.Text)
+                && DataValidator.IsStringValid(textBoxAmountInStorage.Text)
+                && DataValidator.IsNumeric(textBoxAmountInStorage.Text)
+                && DataValidator.IsStringValid(textBoxDimension.Text);
         }
 
         private void GenerateObject(StorageTypes type) 
         {
+            // fill data in new row
             if (type.Equals(StorageTypes.BOOK))
             {
                 this.dataGridView1.Rows.Add(textBoxPrice.Text,
@@ -75,7 +88,7 @@ namespace WinFormsApp1
                     textBoxDescription.Text);
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void DeleteDataButtonClick(object sender, EventArgs e)
         {
             DeleteRow();
         }
