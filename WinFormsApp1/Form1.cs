@@ -13,33 +13,35 @@ namespace WinFormsApp1
 
         private void AddDataButtonClick(object sender, EventArgs e)
         {
-            CheckBaseDataIsSet();
-            ValidateBaseData();
-            var type = IdentifyType();
-            GenerateObject(type);
+            if (!(CheckBaseDataIsSet() && ValidateBaseData()))
+            {
+                MessageBox.Show("Required data is empty or not valid check please!");
+            }
+            else
+            {
+                var type = IdentifyType();
+                GenerateObject(type);
+            }
         }
 
-        private void CheckBaseDataIsSet() 
+        private bool CheckBaseDataIsSet() 
         {
-            CheckBaseNotEmpty(textBoxPrice.Text);
-            CheckBaseNotEmpty(textBoxOriginCountry.Text);
-            CheckBaseNotEmpty(textBoxName.Text);
-            CheckBaseNotEmpty(textBoxDateOfPacking.Text);
+            return CheckBaseNotEmpty(textBoxPrice.Text) &&
+            CheckBaseNotEmpty(textBoxOriginCountry.Text) &&
+            CheckBaseNotEmpty(textBoxName.Text) &&
+            CheckBaseNotEmpty(textBoxDateOfPacking.Text) &&
             CheckBaseNotEmpty(textBoxDescription.Text);
         }
 
-        private void ValidateBaseData() 
+        private bool ValidateBaseData() 
         {
-            DataValidator.IsNumeric(textBoxPrice.Text);
+            return DataValidator.IsNumeric(textBoxPrice.Text) &&
             DataValidator.IsDateTime(textBoxDateOfPacking.Text);
         }
 
         private bool CheckBaseNotEmpty(string data) 
         {
-            if (data.Length == 0) {
-                MessageBox.Show("Required data is empty");
-            }
-            return true;
+            return data.Length != 0; ;
         }
 
         private StorageTypes IdentifyType() 
@@ -55,17 +57,14 @@ namespace WinFormsApp1
         {
             return DataValidator.IsStringValid(textBoxPagesAmount.Text)
                 && DataValidator.IsStringValid(textBoxPublisher.Text)
-                && DataValidator.IsStringValid(textBoxAuthors.Text)
-                && DataValidator.IsNumeric(textBoxPagesAmount.Text);
+                && DataValidator.IsStringValid(textBoxAuthors.Text);
         }
 
-        private bool ProductTypeCheck() 
+        private bool ProductTypeCheck()
         {
             return DataValidator.IsStringValid(textBoxExpirationDate.Text)
-                && DataValidator.IsDateTime(textBoxExpirationDate.Text)
-                && DataValidator.IsStringValid(textBoxAmountInStorage.Text)
-                && DataValidator.IsNumeric(textBoxAmountInStorage.Text)
-                && DataValidator.IsStringValid(textBoxDimension.Text);
+                   && DataValidator.IsNumeric(textBoxAmountInStorage.Text)
+                   && DataValidator.IsStringValid(textBoxDimension.Text);
         }
 
         private void GenerateObject(StorageTypes type) 
