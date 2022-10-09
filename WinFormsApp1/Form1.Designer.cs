@@ -30,6 +30,17 @@ namespace WinFormsApp1
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OriginCountryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateOfPackingColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PagesAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PublisherColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuthorsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpirationDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DimensionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmountInStorageColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.byttonAddGoods = new System.Windows.Forms.Button();
             this.buttonDeleteGoods = new System.Windows.Forms.Button();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
@@ -54,17 +65,7 @@ namespace WinFormsApp1
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxAmountInStorage = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OriginCountryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateOfPackingColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PagesAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PublisherColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuthorsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpirationDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DimensionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AmountInStorageColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,6 +90,72 @@ namespace WinFormsApp1
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1118, 173);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // PriceColumn
+            // 
+            this.PriceColumn.HeaderText = "Price";
+            this.PriceColumn.Name = "PriceColumn";
+            this.PriceColumn.ReadOnly = true;
+            // 
+            // OriginCountryColumn
+            // 
+            this.OriginCountryColumn.HeaderText = "OriginCountry";
+            this.OriginCountryColumn.Name = "OriginCountryColumn";
+            this.OriginCountryColumn.ReadOnly = true;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.HeaderText = "Name";
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            // 
+            // DateOfPackingColumn
+            // 
+            this.DateOfPackingColumn.HeaderText = "DateOfPacking";
+            this.DateOfPackingColumn.Name = "DateOfPackingColumn";
+            this.DateOfPackingColumn.ReadOnly = true;
+            // 
+            // DescriptionColumn
+            // 
+            this.DescriptionColumn.HeaderText = "Description";
+            this.DescriptionColumn.Name = "DescriptionColumn";
+            this.DescriptionColumn.ReadOnly = true;
+            // 
+            // PagesAmountColumn
+            // 
+            this.PagesAmountColumn.HeaderText = "PagesAmount";
+            this.PagesAmountColumn.Name = "PagesAmountColumn";
+            this.PagesAmountColumn.ReadOnly = true;
+            // 
+            // PublisherColumn
+            // 
+            this.PublisherColumn.HeaderText = "Publisher";
+            this.PublisherColumn.Name = "PublisherColumn";
+            this.PublisherColumn.ReadOnly = true;
+            // 
+            // AuthorsColumn
+            // 
+            this.AuthorsColumn.HeaderText = "Authors";
+            this.AuthorsColumn.Name = "AuthorsColumn";
+            this.AuthorsColumn.ReadOnly = true;
+            // 
+            // ExpirationDateColumn
+            // 
+            this.ExpirationDateColumn.HeaderText = "ExpirationDate";
+            this.ExpirationDateColumn.Name = "ExpirationDateColumn";
+            this.ExpirationDateColumn.ReadOnly = true;
+            // 
+            // DimensionColumn
+            // 
+            this.DimensionColumn.HeaderText = "Dimension";
+            this.DimensionColumn.Name = "DimensionColumn";
+            this.DimensionColumn.ReadOnly = true;
+            // 
+            // AmountInStorageColumn
+            // 
+            this.AmountInStorageColumn.HeaderText = "AmountInStorage";
+            this.AmountInStorageColumn.Name = "AmountInStorageColumn";
+            this.AmountInStorageColumn.ReadOnly = true;
             // 
             // byttonAddGoods
             // 
@@ -286,77 +353,22 @@ namespace WinFormsApp1
             this.label10.TabIndex = 25;
             this.label10.Text = "AmountInStorage";
             // 
-            // PriceColumn
+            // buttonExport
             // 
-            this.PriceColumn.HeaderText = "Price";
-            this.PriceColumn.Name = "PriceColumn";
-            this.PriceColumn.ReadOnly = true;
-            // 
-            // OriginCountryColumn
-            // 
-            this.OriginCountryColumn.HeaderText = "OriginCountry";
-            this.OriginCountryColumn.Name = "OriginCountryColumn";
-            this.OriginCountryColumn.ReadOnly = true;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.HeaderText = "Name";
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
-            // 
-            // DateOfPackingColumn
-            // 
-            this.DateOfPackingColumn.HeaderText = "DateOfPacking";
-            this.DateOfPackingColumn.Name = "DateOfPackingColumn";
-            this.DateOfPackingColumn.ReadOnly = true;
-            // 
-            // DescriptionColumn
-            // 
-            this.DescriptionColumn.HeaderText = "Description";
-            this.DescriptionColumn.Name = "DescriptionColumn";
-            this.DescriptionColumn.ReadOnly = true;
-            // 
-            // PagesAmountColumn
-            // 
-            this.PagesAmountColumn.HeaderText = "PagesAmount";
-            this.PagesAmountColumn.Name = "PagesAmountColumn";
-            this.PagesAmountColumn.ReadOnly = true;
-            // 
-            // PublisherColumn
-            // 
-            this.PublisherColumn.HeaderText = "Publisher";
-            this.PublisherColumn.Name = "PublisherColumn";
-            this.PublisherColumn.ReadOnly = true;
-            // 
-            // AuthorsColumn
-            // 
-            this.AuthorsColumn.HeaderText = "Authors";
-            this.AuthorsColumn.Name = "AuthorsColumn";
-            this.AuthorsColumn.ReadOnly = true;
-            // 
-            // ExpirationDateColumn
-            // 
-            this.ExpirationDateColumn.HeaderText = "ExpirationDate";
-            this.ExpirationDateColumn.Name = "ExpirationDateColumn";
-            this.ExpirationDateColumn.ReadOnly = true;
-            // 
-            // DimensionColumn
-            // 
-            this.DimensionColumn.HeaderText = "Dimension";
-            this.DimensionColumn.Name = "DimensionColumn";
-            this.DimensionColumn.ReadOnly = true;
-            // 
-            // AmountInStorageColumn
-            // 
-            this.AmountInStorageColumn.HeaderText = "AmountInStorage";
-            this.AmountInStorageColumn.Name = "AmountInStorageColumn";
-            this.AmountInStorageColumn.ReadOnly = true;
+            this.buttonExport.Location = new System.Drawing.Point(1042, 180);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(75, 23);
+            this.buttonExport.TabIndex = 26;
+            this.buttonExport.Text = "Export";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.ExportData);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1142, 538);
+            this.Controls.Add(this.buttonExport);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBoxAmountInStorage);
             this.Controls.Add(this.label9);
@@ -428,6 +440,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpirationDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DimensionColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountInStorageColumn;
+        private System.Windows.Forms.Button buttonExport;
     }
 }
 
